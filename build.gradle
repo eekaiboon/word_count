@@ -1,0 +1,39 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.7
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile (
+        'org.slf4j:slf4j-api:1.7.7'
+    )
+    runtime (
+        'ch.qos.logback:logback-classic:1.1.2',
+        'ch.qos.logback:logback-core:1.1.2'
+    )
+    testCompile (
+        'junit:junit:4.11'
+    )
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
